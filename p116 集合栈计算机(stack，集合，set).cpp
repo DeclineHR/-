@@ -24,6 +24,7 @@ using namespace std;
 		//如果不在，则将集合添加到setcache中，并在IDcache中创建一个新的映射。
 		return IDcache[x] = setcache.size() - 1;
 }//size() - 1 实际上是最后一个元素的索引
+
 int main(){
 	int T;
 	cin >> T;
@@ -50,8 +51,8 @@ int main(){
 				if (op[0] == 'I') set_intersection(ALL(x1), ALL(x2), INS(ans));
 				//INTERSECTION：先进行两次弹栈，将获得的集合A和B取交集，将结果压栈 
 				if (op[0] == 'A') { ans = x2; ans.insert(ID(x1)); }
-				//ADD：先进行两次弹栈，将获得的集合A和B中，
-				//先出栈的集合（如A先）加入到后出栈的集合，将结果压栈
+				//ADD：先进行两次弹栈，在获得的集合A和B中，
+				//先出栈的集合(此处是x1先出)，加入到后出栈(x2)的集合，将结果压栈
 				sk.push(ID(ans));
 			}
 			cout << setcache[sk.top()].size() << endl;
