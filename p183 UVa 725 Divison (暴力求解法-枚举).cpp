@@ -20,6 +20,7 @@ int main() {
             bool ok = true;
             for (int i = 0; i < 10; i++)
                 if (buf[i] != '0' + i) ok = false;
+            //'0' + 1 = '1'
             //判断buf中元素是否为0123456789;
             if (ok) {
                 cnt++;
