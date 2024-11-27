@@ -13,14 +13,17 @@ void merge_sort(int* A, int x, int y, int* T) {
     //int * T 在归并排序中，T 用于存储合并过程中的中间结果
     if (y - x > 1) {
         //如果当前子数组的长度大于 1，则需要排序
-        int m = x + (y - x) / 2;
+        int m = x + (y - x) / 2;// x(p)  m(q)  y
         int  p = x, q = m, i = x;
         //初始化两个指针 p 和 q 分别指向左右两个子数组的开始位置，i 指向临时数组 T 的开始位置。
         merge_sort(A, x, m, T);
         merge_sort(A, m, y, T);
-        while (p < m || q < y) {
-            if (q >= y || (p < m && A[p] <= A[q]))T[i++] = A[p++];//左半数组复制到临时空间
-            else T[i++] = A[q++];//右半数组复制到临时空间
+        while (p < m || q < y) {//只要p 或者 q还有元素 就继续合并。
+            if (q >= y || (p < m && A[p] <= A[q])) T[i++] = A[p++];
+            //如果右子数组已经处理完毕（q >= y）
+            //或者左子数组的当前元素小于等于右子数组的当前元素（A[p] <= A[q]）
+            //则将左子数组的元素复制到临时数组 T 中，并移动 p,i 指针。
+            else T[i++] = A[q++];
         }
         for (int i = x; i < y; i++) {
             A[i] = T[i];
@@ -28,6 +31,11 @@ void merge_sort(int* A, int x, int y, int* T) {
     }
 }
 int main() {
-   
+    int A[] = { 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5 };
+    int n = sizeof(A) / sizeof(A[0]);
+    merge_sort(A, 0, n, T);
+    for (int i = 0; i < n; i++) {
+        cout << A[i] << " ";
+    }
     return 0;
 }
