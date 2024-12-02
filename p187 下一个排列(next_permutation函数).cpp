@@ -3,8 +3,14 @@
 #include<vector>
 #include<iostream>
 #include<algorithm>//next_permutation头文件
+//-------------------------------------------
  next_permutation（）在使用前需要对排列数组按升序排序，否则只能找出该序列之后的全排列数。
  next_permutation(num,num+n)函数是对数组num中的前n个元素进行全排列，同时并改变num数组的值。
+ next_permutation（node,node+n,cmp）可以对结构体num按照自定义的排序方式cmp进行排序。
+ int cmp(char a,char b){
+  return .....;
+ }
+//-------------------------------------------------------
 using namespace std;
 //第一行输入n表示有n个数
 //第二行输入n个数字 进行排列
